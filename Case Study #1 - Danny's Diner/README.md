@@ -20,7 +20,8 @@ Danny wants to use the data to answer a few simple questions about his customers
 All the information about this case study [Case Study #1 - Danny's Diner](https://8weeksqlchallenge.com/case-study-1/)
 
 ## Entity relationship diagram
-[ER diagram](https://dbdiagram.io/d/Dannys-Diner-608d07e4b29a09603d12edbd?utm_source=dbdiagram_embed&utm_medium=bottom_open)
+
+![er1](https://github.com/user-attachments/assets/9c964ef2-7a96-4bf3-81cd-5ec0da575302)
 
 ## Dataset
 Danny has shared with you 3 key datasets for this case study:
