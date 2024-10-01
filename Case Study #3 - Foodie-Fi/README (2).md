@@ -23,7 +23,7 @@ Danny created Foodie-Fi with a data driven mindset and wanted to ensure all futu
 All the information about this case study [Case Study #3 - Foodie-Fi](https://8weeksqlchallenge.com/case-study-3/)
 
 ## 📌 Entity relationship diagram
-[ER diagram](https://dbdiagram.io/d/Pizza-Runner-5f3e085ccf48a141ff558487?utm_source=dbdiagram_embed&utm_medium=bottom_open)
+![image](https://github.com/user-attachments/assets/32a442b7-1c62-4d92-8eab-9db2d8a4f5b2)
 
 ## 📌 Dataset
 Danny has shared with you 2 key datasets for this case study:
@@ -58,11 +58,23 @@ Explanation:
 
 Based on the results above, I have selected three customers to focus on and will now share their onboarding journey.
 
-Customer 1: This customer initiated their journey by starting the free trial on 1 Aug 2020. After the trial period ended, on 8 Aug 2020, they subscribed to the basic monthly plan.
+Customer 1: 
 
-Customer 13: The onboarding journey for this customer began with a free trial on 15 Dec 2020. Following the trial period, on 22 Dec 2020, they subscribed to the basic monthly plan. After three months, on 29 Mar 2021, they upgraded to the pro monthly plan.
+![image](https://github.com/user-attachments/assets/4e24db36-030d-4792-b7d2-4090635247a4)
 
-Customer 15: Initially, this customer commenced their onboarding journey with a free trial on 17 Mar 2020. Once the trial ended, on 24 Mar 2020, they upgraded to the pro monthly plan. However, the following month, on 29 Apr 2020, the customer decided to terminate their subscription and subsequently churned until the paid subscription ends.
+This customer initiated their journey by starting the free trial on 1 Aug 2020. After the trial period ended, on 8 Aug 2020, they subscribed to the basic monthly plan.
+
+Customer 13: 
+
+![image](https://github.com/user-attachments/assets/9f7a3cce-6ed6-44fd-b47e-90c72abc1ddc)
+
+The onboarding journey for this customer began with a free trial on 15 Dec 2020. Following the trial period, on 22 Dec 2020, they subscribed to the basic monthly plan. After three months, on 29 Mar 2021, they upgraded to the pro monthly plan.
+
+Customer 15: 
+
+![image](https://github.com/user-attachments/assets/bc680030-50fa-449a-9ddd-2103ebdbf24b)
+
+Initially, this customer commenced their onboarding journey with a free trial on 17 Mar 2020. Once the trial ended, on 24 Mar 2020, they upgraded to the pro monthly plan. However, the following month, on 29 Apr 2020, the customer decided to terminate their subscription and subsequently churned until the paid subscription ends.
 
 ### 🖍  B. Data Analysis Questions:
 
@@ -70,7 +82,8 @@ Customer 15: Initially, this customer commenced their onboarding journey with a 
 ```bash 
 select count(distinct(customer_id)) from subscriptions;
 ```
-  
+  ![image](https://github.com/user-attachments/assets/0475431a-253e-4a70-9d1c-97beafd7ec2a)
+
 
 2. What is the monthly distribution of trial plan start_date values for our dataset use the start of the month as the group by value?
 ```bash 
@@ -80,6 +93,7 @@ join plans as p on p.plan_id=s.plan_id where
 s.plan_id=0
 group by month order by month;
 ```
+![image](https://github.com/user-attachments/assets/b1b7716c-d95c-4482-92fc-b6529ed7cb88)
 
 3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name.
 ```bash 
@@ -92,6 +106,9 @@ p.plan_id=s.plan_id
 group by p.plan_id,p.plan_name
 order by p.plan_id;
 ```
+![image](https://github.com/user-attachments/assets/0e4988bf-5705-4b20-b2e7-64a63061b019)
+
+
 4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
 
 ```bash 
@@ -100,6 +117,7 @@ ROUND(100.0 * COUNT(s.customer_id)/ (SELECT COUNT(DISTINCT customer_id) from sub
 from subscriptions as s join plans as p on p.plan_id=s.plan_id where p.plan_name='churn'
 group by p.plan_name;
 ```
+![image](https://github.com/user-attachments/assets/af1d6ba0-9905-464e-8ea3-c8fd4495beaa)
 
 
 5. How many customers have churned straight after their initial free trial what percentage is this rounded to the nearest whole number?
@@ -118,6 +136,7 @@ from subscriptions)) as percentages
 from cte 
 where plan_id=4 and row_n=2;
 ```
+![image](https://github.com/user-attachments/assets/cc4e075a-67d7-48ec-94c3-38d683a5fd42)
 
 6.  What is the number and percentage of customer plans after their initial free trial?
 ```bash 
