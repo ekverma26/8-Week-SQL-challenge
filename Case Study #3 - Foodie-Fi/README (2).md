@@ -154,6 +154,7 @@ where next_plan is not null and plan_id=0
 group by next_plan
 order by next_plan;
 ```
+![image](https://github.com/user-attachments/assets/0d0ecfae-cb67-4794-b8ab-9abd6d02a39c)
 
 7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
 ```bash 
@@ -169,6 +170,7 @@ round(100.0* count(distinct customer_id)/(select count(distinct(customer_id)) fr
 from cte where next_date is null
 group by plan_name ;
 ```
+![image](https://github.com/user-attachments/assets/b596ba45-25a5-445e-ba9d-926c24c6c405)
 
 
 8.  How many customers have upgraded to an annual plan in 2020?
@@ -176,6 +178,7 @@ group by plan_name ;
 select count(distinct customer_id) from subscriptions where plan_id=3 and 
 start_date<='2020-12-31';
 ```
+![image](https://github.com/user-attachments/assets/81730559-0692-4863-8def-9ce92b3bcaf9)
 
 9. How many days on average does it take for a customer to upgrade to an annual plan from the day they join Foodie-Fi?
 ```bash 
@@ -191,6 +194,7 @@ subscriptions where plan_id=3
 select round(avg(c2.start_date - c1.start_date),0) from cte1 as c1
 join cte2 as c2 on c1.customer_id=c2.customer_id;
 ```
+![image](https://github.com/user-attachments/assets/2d178dd2-c651-422e-b465-1733c3a8b961)
 
 
 10.  Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)?
@@ -214,6 +218,7 @@ select
 count(*) as customers from bin group by days
 order by days;
 ```
+![image](https://github.com/user-attachments/assets/60f2079e-186e-4238-827f-cc1689ac0357)
 
 11.  How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
 ```bash 
@@ -227,4 +232,5 @@ join plans as p on p.plan_id=s.plan_id where extract(year from s.start_date)=202
 select count(customer_id) from cte
 where plan_id=2 and next_date=1;
 ```
+![image](https://github.com/user-attachments/assets/5fa1145f-f250-4407-9de0-a6abe2f1b00b)
 
